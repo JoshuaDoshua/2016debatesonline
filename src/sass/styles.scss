@@ -1,0 +1,10 @@
+@import "mix/mix";
+@import "mix/var";
+
+	@import "base/type";
+	@import "base/mod";
+
+		@import "part/nav";
+		@import "part/vids";
+		@import "part/cands";
+		@import "part/foot";

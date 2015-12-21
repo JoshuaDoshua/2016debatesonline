@@ -1,0 +1,195 @@
+@import "compass";
+@import "compass/typography/vertical_rhythm";
+
+@function black($val) {
+	@return rgba(0,0,0,$val);
+}
+@function white($val) {
+	@return rgba(255,255,255,$val);
+}
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
+@mixin font-smoothing($value: on) {
+  @if $value == on {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+@mixin z($key) {
+	z-index: index($layers,$key);
+}
+@mixin opacity($value : 0.5) {
+	opacity: $value;
+	filter: alpha(opacity= $value * 100 );
+	zoom: 1;
+}
+@mixin blockSize($w: 100px, $h: false, $inline: false) {
+	@if ($inline) { display: inline-block; }
+	@else 				{ display: block; }
+	width: $w;
+	@if ($h) 	{ height: $h; }
+	@else 		{ height: $w;	}
+}
+@mixin circle($radius: 100px, $inline: false) {
+	@include blockSize($radius, $radius, $inline);
+	border-radius: 50%;
+}
+@mixin posTL($pos, $t, $l, $z: false) {
+	position: $pos;
+	top: $t;
+	left: $l;
+	@if $z != false { z-index: $z; }
+}
+@mixin posTR($pos, $t, $r, $z: false) {
+	position: $pos;
+	top: $t;
+	right: $r;
+	@if $z != false { z-index: $z; }
+}
+@mixin posBR($pos, $b, $r, $z: false) {
+	position: $pos;
+	bottom: $b;
+	right: $r;
+	@if $z != false { z-index: $z; }
+}
+@mixin posBL($pos, $b, $l, $z: false) {
+	position: $pos;
+	bottom: $b;
+	left: $l;
+	@if $z != false { z-index: $z; }
+}
+@mixin verticalCenter($pos: absolute) {
+	position: $pos;
+	top: 50%;
+	transform: translateY(-50%);
+}
+@mixin horizontalCenter($pos: absolute) {
+	position: $pos;
+	left: 50%;
+	transform: translateX(-50%);
+}
+@mixin absoluteCenter($pos: absolute) {
+	@include posTL($pos,50%,50%);
+	transform: translate(-50%,-50%);
+}
+@mixin aspectRatio($percentage: 50%, $pseudo: after) {
+	&:#{$pseudo} {
+		content: "";
+		display: block;
+		padding-bottom: $percentage;
+	}
+}
+@mixin respond($bp, $determinate : min) {
+	@media screen and ( $determinate+-width: $bp ) { @content; }
+}
+@mixin respondBetween($min,$max) {
+	@media screen and (min-width: #{$min}) and (max-width: #{$max}) { @content; }
+}
+@mixin activeOpacity($class: active, $time: 250ms) {
+	opacity: 0;
+	transition: all ease $tm;
+	&.#{$class} { opacity: 1; }
+}
+@mixin borderSpace($space: .5em, $bSize: 1px, $bStyle: solid, $bColor: black(0.75)) {
+	margin-top: $space;
+	padding-bottom: $space;
+	border-top: $bSize $bStyle $bColor;
+	&:first-child {
+		margin-top: 0;
+		border-top: 0;
+	}
+}
+// http://cssarrowplease.com
+@mixin borderArrow($pos: bottom, $size: 20px, $color: #fff, $bSize: false, $bColor: false) {
+	position: relative;
+	background: $color;
+	&:after {
+		content: " ";
+		pointer-events: none;
+		@include blockSize(0,0);
+		position: absolute;
+		border-style: solid;
+		border-width: $size;
+		border-color: rgba($color,0);
+		// these need to be opposite of position
+		// top/bottom & left/right transformX/Y
+		@if 		($pos == top) 		{ bottom: 100%; border-bottom-color: $color; 	@include horizontalCenter(absolute); }
+		@elseif ($pos == bottom) 	{ top: 		100%;	border-top-color: 	 $color; 	@include horizontalCenter(absolute); }
+		@elseif ($pos == left) 		{ right: 	100%; border-right-color:  $color; 	@include verticalCenter(absolute); }
+		@elseif ($pos == right) 	{ left: 	100%; border-left-color: 	 $color; 	@include verticalCenter(absolute); }
+	}
+	// requires COMPASS math helpers
+	@if ($bSize and $bColor) {
+		border: $bSize solid $bColor;
+		&:before{
+			content: " ";
+			pointer-events: none;
+			@include blockSize(0,0);
+			border-style: solid;
+			border-color: rgba($bColor,0);
+			border-width: $size + ($bSize * sqrt(2));
+			@if 		($pos == top) 		{ bottom: 100%; border-bottom-color: $bColor; 	@include horizontalCenter(absolute); }
+			@elseif ($pos == bottom) 	{ top: 		100%;	border-top-color: 	 $bColor; 	@include horizontalCenter(absolute); }
+			@elseif ($pos == left) 		{ right: 	100%; border-right-color:  $bColor; 	@include verticalCenter(absolute); }
+			@elseif ($pos == right) 	{ left: 	100%; border-left-color: 	 $bColor; 	@include verticalCenter(absolute); }
+		}
+	}
+	@elseif ($bSize or $bColor) {
+		@error "Adding a border to Border Arrow mixin requires both size and color";
+	}
+}
+@mixin sideLined( $height: 1px, $style: solid, $color: inherit, $space: 0.5em, $bottom: false, $double: false) {
+	display: block;
+	overflow: hidden;
+	text-align: center;
+	&:before, &:after {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		width: 50%;
+		border-top-style: $style;
+		border-top-width: $height;
+		@if $color != inherit { border-top-color: $color; }
+		@if $bottom != false { bottom: $bottom; }
+		@if $double != false {
+			height: $double;
+			border-bottom: {
+				style: $style;
+				width: $height;
+				color: $color;
+			}
+		}
+	}
+	&:before {
+		right: $space;
+		margin-left: -50%;
+	}
+	&:after {
+		left: $space;
+		margin-right: -50%;
+	}
+}
+
+@mixin placeholder($color) {
+	::-webkit-input-placeholder { color: $color; }
+	:-moz-placeholder { color: $color; }
+	::-moz-placeholder { color: $color; }
+	:-ms-input-placeholder { color: $color;}
+}
+
+
+// @function calculateRem($size) {
+//   $remSize: $size / 16px;
+//   @return $remSize * 1rem;
+// }
+//
+// @mixin font-size($size) {
+//   font-size: $size;
+//   font-size: calculateRem($size);
+// }

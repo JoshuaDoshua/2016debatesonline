@@ -1,0 +1,87 @@
+.open.dem.cands .cands-list#cand-dem,
+.open.gop.cands .cands-list#cand-gop {
+  opacity: 1;
+  pointer-events: all;
+}
+.candidates-list {
+  opacity: 0;
+  @include posTL(absolute,0,0);
+  @include z(cands);
+  width: 100vw;
+  height: 100vh;
+  padding: 0 0 56px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+}
+.candidates {
+  &-item {
+    width: 33%;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid $lightGray;
+    background: {
+      color: $red;
+      repeat: no-repeat;
+      position: left top;
+      size: auto 100%;
+    }
+    &.dem { background-color: $blue; }
+    &:hover { background-color: darken($red,20); }
+    &.dem:hover { background-color: darken($blue,20); }
+  }
+  &-img {}
+  &-link {
+    @include blockSize(100%,100%);
+    padding: 5%;
+    text-align: right;
+    &-text {
+      margin-top: .5em;
+      text-decoration: underline;
+    }
+  }
+  &-name {
+    font-size: 1.35em;
+  }
+}
+@include respond(925px,max) {
+  .candidates-item { width: 40%; }
+}
+@include respond(800px,max) {
+  .candidates-item { width: 50%; }
+}
+@include respond(530px,max) {
+  .candidates-name { font-size: 1em; }
+  .candidates-link-text { font-size: .5em; }
+}
+@include respond(440px,max) {
+  .candidates-item {
+    width: 50%;
+    position: relative;
+    background: {
+      position: center center;
+      size: 100%;
+    }
+    &.dem .candidates-link { border-color: $blue; }
+  }
+  .candidates-link {
+    @include posTL(absolute,0,0);
+    text-align: center;
+    padding: 8%;
+    background: black(0.5);
+    padding: 7%;
+    border: 2px solid $red;
+  }
+}
+// li:first-child:nth-last-child(2),
+// li:first-child:nth-last-child(2) ~ li {}
+//
+// @for $i from 1 through 20 {
+//   .candidates-item:nth-last-child($i),
+//   .candidates-item:nth-last-child($i) ~ li {
+//     width:
+//   }
+// }

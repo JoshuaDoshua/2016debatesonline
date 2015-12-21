@@ -1,0 +1,47 @@
+<section id="videos">
+  <ul id="videos-dem" class="videos-list">
+    <li class="videos-item [ITEMCLASS]">
+      <a href="[URL]" class="videos-link [LINKCLASS]" onclick="ga('send','event','videos','watch','[GALABEL]');">
+        <span class="videos-title">
+          <i class="videos-icon fa fa-star"></i>
+          <span class="videos-date">[DATE]</span>
+          <i class="videos-icon fa fa-star"></i>
+        </span>
+      </a>
+    </li>
+  </ul>
+  <ul id="videos-gop" class="videos-list"></ul>
+</section>
+
+<script type="text/javascript">
+(function() {
+
+  var demNode = document.getElementById('videos-dem');
+  var gopNode = document.getElementById('videos-gop');
+  var placeholder = demNode.innerHTML.toString();
+  demNode.innerHTML = "";
+
+  for (var i=0,len=data.dem.length; i<len; i++) {
+    appendVideo(demNode, data.dem[i], "dem");
+  }
+  for (var i=0, len=data.gop.length; i<len; i++) {
+    appendVideo(gopNode, data.gop[i], "gop");
+  }
+  function appendVideo(tar,obj,type) {
+    var date = (obj.date.getMonth() === 0 ? "12" : obj.date.getMonth()) + '-' + obj.date.getDate() + '-' + obj.date.getFullYear().toString().substring(2,4);
+    var linkClass = (obj.url) ? "video" : "modal-link";
+    var url = obj.url;
+    if (url === null) {
+      url = "#no-video";
+    }
+
+    tar.innerHTML += placeholder
+      .replace('[DATE]',date)
+      .replace('[LINKCLASS]',linkClass)
+      .replace('[ITEMCLASS]',type + " " + linkClass + "-item")
+      .replace('[GALABEL]',type + " " + date)
+      .replace('[URL]',url);
+
+  }
+})();
+</script>

@@ -1,0 +1,21 @@
+*{
+  box-sizing: border-box;
+  transition: all ease $tm;
+}
+
+html,body {
+  @include posTL(absolute,0,0);
+  @include blockSize(100vw,100vh);
+  overflow: hidden;
+}
+body {
+  font-family: $serif;
+  background: $lightGray;
+}
+
+a, a:active, a:hover, a:visited {
+  color: $white;
+  transition: all ease $tm;
+  text-decoration: none;
+}
+a:focus { outline: 0; }

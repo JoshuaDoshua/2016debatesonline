@@ -1,0 +1,133 @@
+.videos-list {
+  opacity: 0;
+  background: $lightGray;
+  @include posTL(absolute,0,0);
+  @include z(vids);
+  padding-bottom: 56px;
+  overflow: hidden;
+  transition-timing-function: $easeInOutBack;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  // counter-reset: vids-counter;
+}
+.videos {
+  &-item {
+    overflow: hidden;
+    display: block;
+    flex: 1;
+    position: relative;
+    &:after {
+      content: "";
+      @include blockSize(100vw,1px);
+      @include verticalCenter;
+      @include z(floor);
+      top: 54%;
+      background: $red;
+      pointer-events: none;
+    }
+    &:nth-child(even) {
+      .videos-date { color: $blue; }
+      &:after { background: $blue; }
+      .videos-icon { color: $red; }
+    }
+    &:last-child .videos-title {
+      left: auto !important;
+      right: 0;
+    }
+    &.modal-link-item:after {
+      background: $gray !important;
+    }
+    &:hover {
+      background: $white;
+      .videos-title { background: $white; }
+    }
+  }
+  &-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: $white;
+    font-size: 1em;
+    color: $red;
+    &.modal-link .videos-icon,
+    &.modal-link .videos-date {
+      color: $gray !important;
+    }
+  }
+  &-title {
+    background: $lightGray;
+    color: $red;
+    display: inline-block;
+    text-align: center;
+    height: 100%;
+    min-width: 180px;
+    @include verticalCenter;
+    @include z(vids);
+  }
+  &-date {}
+  &-icon {
+    color: $blue;
+    font-size: .5em !important;
+    vertical-align: middle;
+    padding: 0 .5em .5em;
+  }
+}
+$demCount: 6;
+$gopCount: 12;
+
+$demWidth:  100/$demCount;
+$gopWidth: 100/$gopCount;
+
+#videos-dem .videos-item{
+  .videos-link { height: #{$demWidth + "vh"}; }
+  .videos-title {
+    width: #{$demWidth + "%"};
+    line-height: #{$demWidth + "vh"};
+  }
+}
+@for $i from 1 through $demCount {
+  #videos-dem .videos-item:nth-child(#{$i}) .videos-title {
+    // left: #{$demWidth * ($i - 1) + "%"};
+    @if ($i <= ($demCount/2) ) {
+      left: #{$demWidth * ($i - 1) + "%"};
+    } @else {
+      right: #{($demCount - $i) * $demWidth + "%"};
+    }
+  }
+}
+
+#videos-gop {
+  .videos-link { height: #{$gopWidth + "vh"}; }
+  .videos-item .videos-title {
+    width: #{$gopWidth + "%"};
+    line-height: #{$gopWidth + "vh"};
+  }
+}
+@for $i from 1 through $gopCount {
+  #videos-gop .videos-item:nth-child(#{$i}) .videos-title {
+    @if ($i <= ($gopCount/2) ) {
+      left: #{$gopWidth * ($i - 1) + "%"};
+    } @else {
+      right: #{($gopCount - $i) * $gopWidth + "%"};
+    }
+  }
+}
+
+@include respond(400px,max) {
+  .videos-item {
+    .videos-title {
+      left: 5% !important;
+      right: auto !important;
+    }
+    &:nth-child(even) {
+      .videos-title {
+        right: 5% !important;
+        left: auto !important;
+      }
+    }
+  }
+}

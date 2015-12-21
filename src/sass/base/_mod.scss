@@ -1,0 +1,115 @@
+path.blue { fill: $blue; }
+path.red { fill: $red; }
+
+.blue { background: $blue; }
+.red { background: $red; }
+
+.btn {
+	text-align: center;
+	display: inline-block;
+	text-transform: uppercase;
+	padding: .5em 1em;
+	margin: 1em .5em 0;
+	border-radius: $br;
+	background: $blue;
+	&:hover { background: $red; }
+	&.fb { background: $facebook; &:hover { background: darken($facebook,20); } }
+	&.tw { background: $twitter; &:hover { background: darken($twitter,20); } }
+	&.li { background: $linkedin; &:hover { background: darken($linkedin,20); } }
+}
+
+.open {
+	.site-foot {
+		bottom: 0;
+	}
+	.foot-link,
+	&.dem #videos-dem,
+	&.gop #videos-gop,
+	&.candidates #candidates-list {
+    opacity: 1;
+    pointer-events: all;
+  }
+	&.candidates {
+		.videos-list {
+			transform: translateY(-100%);
+		}
+		#show-candidates {
+			opacity: 0;
+			pointer-events: none;
+		}
+	}
+}
+
+.modal {
+	@include absoluteCenter;
+	background: black(0.85);
+	border: 3px solid $black;
+	padding: 5%;
+	border-radius: $br;
+	background: $white;
+	color: $black;
+	width: 90%;
+	max-width: 550px;
+	text-align: center;
+	opacity: 0;
+	.mfp-ready & { opacity: 1; }
+	&-title {
+		font-size: 1.5em;
+		text-transform: uppercase;
+	}
+	&-content {
+		margin: 1.5em auto;
+	}
+	&-footer {
+		text-align: center;
+	}
+	p {
+		margin-bottom: .75em;
+		line-height: 1.3;
+	}
+	hr {
+		border: 1px solid $gray;
+		margin: 1.5em auto;
+		max-width: 75%;
+	}
+}
+#pull-request {
+	font-size: .85em;
+	a {
+		color: $blue;
+	}
+}
+
+.mfp-close-btn-in .mfp-close,
+button.mfp-close {
+	$size: 30px;
+	@include posTR(absolute, -#{$size/3}, -#{$size/3});
+	background: $white;
+	color: $darkGray;
+	border: 3px solid $darkGray;
+	cursor: pointer;
+	@include circle($size);
+	line-height: #{$size * .9};
+	text-align: center;
+	opacity: 1;
+	padding: 0;
+	&:hover {
+		background: $gray;
+		color: $black;
+		border-color: $black;
+	}
+}
+.mfp-fade {
+	&.mfp-bg {
+		opacity: 0;
+		&.mfp-ready { opacity: 0.8; }
+		&.mfp-removing { opacity: 0; }
+	}
+	&.mfp-wrap {
+		.mfp-content {
+			opacity: 0;
+		}
+		&.mfp-ready .mfp-content { opacity: 1; }
+		&.mfp-removing .mfp-content { opacity: 0; }
+	}
+}

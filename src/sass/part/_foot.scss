@@ -1,0 +1,41 @@
+.site-foot {
+  @include posBL(absolute,-#{$footSize},0);
+  @include z(foot);
+  @include blockSize(100%,$footSize);
+  background: $darkGray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+.foot {
+  &-link {
+    color: $white;
+    opacity: 0;
+    transition-delay: $tm;
+    pointer-events: none;
+    margin: 0 $footSpace + 10px;
+    &#back { @include posBL(absolute,$footSpace,$footSpace); }
+    &#show-candidates { @include posBR(absolute,$footSpace,$footSpace); }
+    &:hover {
+      color: $lightGray;
+      @include respond(550px) {
+        .foot-text { max-width: 120px; }
+      }
+    }
+  }
+  &-text {
+    max-width: 0;
+    transition: all ease $tm;
+    overflow: hidden;
+    display: inline-block;
+    text-transform: uppercase;
+    padding-left: 10px;
+    line-height: 1.5;
+  }
+  &-icon:hover {
+    // transform: scale(1.05);
+    color: $red;
+    // text-shadow: 0 0 10px $red;
+  }
+}

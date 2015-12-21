@@ -1,0 +1,13 @@
+User-agent: *
+Disallow:
+Disallow: /cgi-bin/
+Disallow: /grunt/
+Disallow: /build/
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: .bowerrc
+Disallow: .gitignore
+Disallow: bower.json
+Disallow: config.rb
+Disallow: Gruntfile.js
+Disallow: package.json 

@@ -1,0 +1,54 @@
+.site-nav {
+  @include posTL(absolute,0,0);
+  @include z(nav);
+  @include blockSize(100vw,100vh);
+  flex-wrap: nowrap;
+  display: flex;
+  pointer-events: none;
+  a {
+    flex-basis: 50%;
+    position: relative;
+    transition-timing-function: $easeInOutBack;
+    background: $white;
+    pointer-events: all;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0 2em;
+    .open & {
+      &:first-child { transform: translateX(-100%); }
+      &:last-child { transform: translateX(100%); }
+    }
+    &:before,&:after {
+      content: "";
+      @include posTL(absolute,0,0,1);
+      @include blockSize(100%,50%);
+      transition: all ease $tm;
+    }
+    &:after { top: 50%; }
+    &:hover {
+      &:before { background: $blue; }
+      &:after { background: $red; }
+      svg path { fill: $white; }
+    }
+  }
+  svg {
+    max-width: 80%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+    @include absoluteCenter;
+    z-index: 2;
+    transition: all ease $tm;
+    transform-origin: center;
+    @include respond($bp) {
+      max-width: 400px;
+    }
+  }
+  @include respond(550px,max) {
+    flex-direction: column;
+    svg {
+      max-height: 60%;
+    }
+  }
+}
