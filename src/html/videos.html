@@ -28,7 +28,15 @@
     appendVideo(gopNode, data.gop[i], "gop");
   }
   function appendVideo(tar,obj,type) {
-    var date = (obj.date.getMonth() === 0 ? "12" : obj.date.getMonth()) + '-' + obj.date.getDate() + '-' + obj.date.getFullYear().toString().substring(2,4);
+    console.log(obj.date.getFullYear() + "->" + obj.date.getMonth());
+    // weird javascript zero based months? but only dec?
+    var month = (obj.date.getMonth() === 0) ? "12" : obj.date.getMonth();
+    var yr = obj.date.getFullYear().toString().substring(2,4);
+    // weird javascript zero based dates?
+    if (month == 12) {
+      yr--;
+    }
+    var date = month + "-" + obj.date.getDate() + "-" + yr;
     var linkClass = (obj.url) ? "video" : "modal-link";
     var url = obj.url;
     if (url === null) {
