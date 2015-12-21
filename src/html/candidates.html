@@ -1,6 +1,6 @@
 <section id="candidates">
   <ul id="candidates-list" class="candidates-list">
-    <li class="candidates-item [CLASS]" style="background-image:url([IMAGE]);">
+    <li class="candidates-item [CLASS] [STATUS]" style="background-image:url([IMAGE]);">
       <a href="[URL]" class="candidates-link" target="_blank" onclick='ga("send","event","candidates","click","[GALABEL]");'>
         <h3 class="candidates-name">[NAME]</h3>
         <p class="candidates-link-text">Read More</p>
@@ -20,6 +20,7 @@
   for (var i=0,len=data.candidates.length; i<len; i++) {
     candidatesNode.innerHTML += placeholder
     .replace('[CLASS]',data.candidates[i].class)
+    .replace('[STATUS]', (data.candidates[i].active ? "active" : "inactive"))
     .replace('[NAME]',data.candidates[i].name)
     .replace('[IMAGE]',data.candidates[i].img)
     .replace('[GALABEL]',data.candidates[i].name)

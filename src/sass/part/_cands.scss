@@ -29,6 +29,11 @@
       position: left top;
       size: auto 100%;
     }
+    &.inactive {
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+      .candidates-link { color: $gray; }
+    }
     &.dem { background-color: $blue; }
     &:hover { background-color: darken($red,20); }
     &.dem:hover { background-color: darken($blue,20); }
