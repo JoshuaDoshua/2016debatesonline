@@ -28,7 +28,6 @@
     appendVideo(gopNode, data.gop[i], "gop");
   }
   function appendVideo(tar,obj,type) {
-    console.log(obj.date.getFullYear() + "->" + obj.date.getMonth());
     // weird javascript zero based months? but only dec?
     var month = (obj.date.getMonth() === 0) ? "12" : obj.date.getMonth();
     var yr = obj.date.getFullYear().toString().substring(2,4);
