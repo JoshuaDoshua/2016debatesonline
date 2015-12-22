@@ -4,10 +4,10 @@ module.exports = function(grunt)
 		pkg: grunt.file.readJSON('package.json'),
 
 		// DIRECTORIES
-		public:	'public',
+		public:	'',
 		src: 		'src',
-		build: 	'build',
-		dist: 	'<%= public %>/assets',
+		build: 	'limbo',
+		dist: 	'assets',
 
 		dir: {
 			src: {

@@ -1,7 +1,5 @@
 .sass-cache
 node_modules
-build
-todo.md
-dist
+limbo
 src/bower
 npm-debug.log

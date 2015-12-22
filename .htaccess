@@ -4,13 +4,13 @@ ErrorDocument 404 http://2016debatesonline.com
   RewriteEngine On
   Options +FollowSymLinks
 
-  RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
-  RewriteRule ^ %1 [L,NE,R=302]
+  # RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+  # RewriteRule ^ %1 [L,NE,R=302]
 
-  RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+  # RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
 
-  RewriteCond ${REQUEST_URI} !=/preview.jpg [NC]
-  RewriteCond %{HTTP_HOST} ^www.2016debatesonline.com$ [NC]
-  RewriteRule ^(.*)$ http://2016debatesonline.com [R=301,L]
+  # RewriteCond ${REQUEST_URI} !=/preview.jpg [NC]
+  # RewriteCond %{HTTP_HOST} ^www.2016debatesonline.com$ [NC]
+  # RewriteRule ^(.*)$ http://2016debatesonline.com [R=301,L]
 
 </IfModule>
