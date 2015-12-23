@@ -4,10 +4,13 @@ jQuery(document).ready(function($) {
 
   var goTo = function() {
     switch (location.hash) {
+
+      // default to regular screen
       case "":
       case "#":
         backBtn.href = "#";
         document.body.className = "";
+        $.magnificPopup.close();
         break;
 
       // tricky if come straight to candidates
@@ -17,34 +20,48 @@ jQuery(document).ready(function($) {
         document.body.className = "open candidates";
         break;
 
+      // video-side choices
       case "#dem":
       case "#gop":
       backBtn.href = "#";
         document.body.className = "open " + location.hash.replace('#','');
         break;
 
+      // static modals
       case "#about":
       case "#share":
       case "#bug":
-        console.log(location.hash);
         $.magnificPopup.open({
-          items: location.hash,
-          mainClass: 'mfp-fade',
-          removalDelay: 160,
-          preloader: false,
-        });
-        break;
-
-      // modals
-      default:
-        // magnificPopup
-        $.magnificPopup({
-          items: function() {
-            return "#";
+          items: {
+            type: 'inline',
+            src: location.hash
           },
           mainClass: 'mfp-fade',
           removalDelay: 160,
           preloader: false,
+          callbacks: {
+            close: function() {
+              console.log('figure out previous spot');
+            }
+          }
+        });
+        break;
+
+      // must be a video modals
+      default:
+        var videoSrc = $('[href="' + location.hash + '"]').attr('data-src');
+        document.body.className = "open " + location.hash.replace(/[^a-z]/g, "");
+        $.magnificPopup.open({
+          type: 'iframe',
+          items: {src: videoSrc},
+          mainClass: 'mfp-fade',
+          removalDelay: 160,
+          preloader: false,
+          callbacks: {
+            close: function() {
+              console.log('figure out previous spot');
+            }
+          }
         });
     }
   };
