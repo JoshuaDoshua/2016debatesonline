@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<link rel="canonical" href="http://2016debatesonline.com">
-
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link rel="dns-prefetch" href="//google-analytics.com">
 <link rel="dns-prefetch" href="//www.google-analytics.com">
+
+<link rel="canonical" href="http://2016debatesonline.com">
 
 <title>Watch 2016 Presidential Debates Online</title>
 
@@ -220,11 +220,11 @@
 
 <section id="videos">
   <ul id="videos-dem" class="videos-list">
-    <li class="videos-item [ITEMCLASS]">
-      <a href="[LABEL]" class="videos-link [LINKCLASS]" data-src="[URL]" onclick="ga('send','event','videos','watch','[GALABEL]');">
+    <li class="videos-item {ITEMCLASS}">
+      <a href="#{SHORTNAME}" class="videos-link {LINKCLASS}" data-src="{SRC}" onclick="ga('send','event','videos','watch','{SHORTNAME}');">
         <span class="videos-title">
           <i class="videos-icon fa fa-star"></i>
-          <span class="videos-date">[DATE]</span>
+          <span class="videos-date">{TITLE}</span>
           <i class="videos-icon fa fa-star"></i>
         </span>
       </a>
@@ -256,19 +256,19 @@
       yr--;
     }
     var date = month + "-" + obj.date.getDate() + "-" + yr;
-    var linkClass = (obj.url) ? "video" : "modal-link";
-    var url = obj.url;
-    if (url === null) {
-      url = "#no-video";
+    var shortName = type + "-" + date;
+    var linkClass = (obj.src) ? "has-video" : "no-video";
+    var src = obj.src;
+    if (src === null) {
+      shortName = src = "no-video";
     }
 
     tar.innerHTML += placeholder
-      .replace('[DATE]',date)
-      .replace('[LINKCLASS]',linkClass)
-      .replace('[ITEMCLASS]',type + " " + linkClass + "-item")
-      .replace('[LABEL]', '#' + type + "-" + date)
-      .replace('[GALABEL]',type + " " + date)
-      .replace('[URL]',url);
+      .replace('{TITLE}',date)
+      .replace('{LINKCLASS}',linkClass)
+      .replace('{ITEMCLASS}',type + " " + linkClass + "-item")
+      .replace('{SRC}',src)
+      .replace(/\{SHORTNAME\}/g,shortName);
 
   }
 })();

@@ -1,10 +1,10 @@
 <section id="videos">
   <ul id="videos-dem" class="videos-list">
-    <li class="videos-item [ITEMCLASS]">
-      <a href="[LABEL]" class="videos-link [LINKCLASS]" data-src="[URL]" onclick="ga('send','event','videos','watch','[GALABEL]');">
+    <li class="videos-item {ITEMCLASS}">
+      <a href="#{SHORTNAME}" class="videos-link {LINKCLASS}" data-src="{SRC}" onclick="ga('send','event','videos','watch','{SHORTNAME}');">
         <span class="videos-title">
           <i class="videos-icon fa fa-star"></i>
-          <span class="videos-date">[DATE]</span>
+          <span class="videos-date">{TITLE}</span>
           <i class="videos-icon fa fa-star"></i>
         </span>
       </a>
@@ -36,19 +36,19 @@
       yr--;
     }
     var date = month + "-" + obj.date.getDate() + "-" + yr;
-    var linkClass = (obj.url) ? "video" : "modal-link";
-    var url = obj.url;
-    if (url === null) {
-      url = "#no-video";
+    var shortName = type + "-" + date;
+    var linkClass = (obj.src) ? "has-video" : "no-video";
+    var src = obj.src;
+    if (src === null) {
+      shortName = src = "no-video";
     }
 
     tar.innerHTML += placeholder
-      .replace('[DATE]',date)
-      .replace('[LINKCLASS]',linkClass)
-      .replace('[ITEMCLASS]',type + " " + linkClass + "-item")
-      .replace('[LABEL]', '#' + type + "-" + date)
-      .replace('[GALABEL]',type + " " + date)
-      .replace('[URL]',url);
+      .replace('{TITLE}',date)
+      .replace('{LINKCLASS}',linkClass)
+      .replace('{ITEMCLASS}',type + " " + linkClass + "-item")
+      .replace('{SRC}',src)
+      .replace(/\{SHORTNAME\}/g,shortName);
 
   }
 })();

@@ -106,60 +106,60 @@ var data = {
   ],
   "gop": [{
       date: new Date(2015,08,06),
-      url: "https://www.youtube.com/watch?v=45ohd2KqL0w"
+      src: "https://www.youtube.com/watch?v=45ohd2KqL0w"
     }, {
       date: new Date(2015,09,16),
-      url: "https://www.youtube.com/watch?v=ehRCd7f5RJc"
+      src: "https://www.youtube.com/watch?v=ehRCd7f5RJc"
     }, {
       date: new Date(2015,10,28),
-      url: "https://www.youtube.com/watch?v=mTz8jtjAfyg",
+      src: "https://www.youtube.com/watch?v=mTz8jtjAfyg",
     }, {
       date: new Date(2015,11,10),
-      url: "https://www.youtube.com/watch?v=jC0wgWnvL6c"
+      src: "https://www.youtube.com/watch?v=jC0wgWnvL6c"
     }, {
       date: new Date(2015,12,15),
-      url: "https://www.youtube.com/watch?v=d96ndXfP0X4"
+      src: "https://www.youtube.com/watch?v=d96ndXfP0X4"
     }, {
       date: new Date(2016,01,14),
-      url: null
+      src: null
     }, {
       date: new Date(2015,01,28),
-      url: null
+      src: null
     }, {
       date: new Date(2016,02,06),
-      url: null
+      src: null
     }, {
       date: new Date(2016,02,13),
-      url: null
+      src: null
     }, {
       date: new Date(2016,02,26),
-      url: null
+      src: null
     }, {
       date: new Date(2016,03,10),
-      url: null
+      src: null
     }, {
       date: new Date(2016,03,23),
-      url: null
+      src: null
     }
   ],
   "dem": [{
       date: new Date(2015,10,13),
-      url: "https://player.vimeo.com/video/142343973"
+      src: "https://player.vimeo.com/video/142343973"
     }, {
       date: new Date(2015,11,14),
-      url: "https://player.vimeo.com/video/145763686"
+      src: "https://player.vimeo.com/video/145763686"
     }, {
       date: new Date(2015,12,19),
-      url: "https://www.youtube.com/watch?v=hCFsCQavaDw"
+      src: "https://www.youtube.com/watch?v=hCFsCQavaDw"
     }, {
       date: new Date(2016,01,17),
-      url: null
+      src: null
     }, {
       date: new Date(2016,02,11),
-      url: null
+      src: null
     }, {
       date: new Date(2016,03,09),
-      url: null
+      src: null
     }
   ]
 };

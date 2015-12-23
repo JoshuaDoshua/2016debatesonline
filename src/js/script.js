@@ -33,6 +33,7 @@ jQuery(document).ready(function($) {
       case "#about":
       case "#share":
       case "#bug":
+      case "#no-video":
         $.magnificPopup.open({
           items: {
             type: 'inline',

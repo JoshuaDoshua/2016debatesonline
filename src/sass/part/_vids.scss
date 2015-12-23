@@ -37,7 +37,7 @@
       left: auto !important;
       right: 0;
     }
-    &.modal-link-item:after {
+    &.no-video:after {
       background: $gray !important;
     }
     &:hover {
@@ -53,8 +53,8 @@
     color: $white;
     font-size: 1em;
     color: $red;
-    &.modal-link .videos-icon,
-    &.modal-link .videos-date {
+    &.no-video .videos-icon,
+    &.no-video .videos-date {
       color: $gray !important;
     }
   }
