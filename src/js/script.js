@@ -69,6 +69,7 @@ jQuery(document).ready(function($) {
           }
         });
     }
+    ga('send','pageview',location.hash);
   };
 
   window.addEventListener('load',goTo);
