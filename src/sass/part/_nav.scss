@@ -14,7 +14,7 @@
     display: flex;
     align-items: stretch;
     justify-content: center;
-    padding: 0 2em;
+    padding: 10%;
     .open & {
       &:first-child { transform: translateX(-100%); }
       &:last-child { transform: translateX(100%); }
