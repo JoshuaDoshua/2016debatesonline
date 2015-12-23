@@ -1,5 +1,10 @@
 jQuery(document).ready(function($) {
 
+  // if i'm just using hashes, do i really need the history API?
+  // could just check hash on page-load and manually magnificPopup
+  // maybe necessary for back button?
+  // maybe just want to play with history api
+
   var $body = $('body');
   var current = "#";
 
@@ -9,7 +14,7 @@ jQuery(document).ready(function($) {
       .addClass('open')
       .removeClass('dem gop')
       .addClass(this.hash.replace('#',''));
-    current = this.hash;
+    updateHistory(this.hash);
     console.log(current);
   });
 
@@ -23,15 +28,43 @@ jQuery(document).ready(function($) {
     }
   };
 
-  var goToSection = function() {
+  var updateHistory = function(hash) {
+    if (!hash) {
+      current = getCurrentSection();
+    } else {
+      current = hash;
+    }
+    history.pushState({current:current},null,current);
+  };
+
+  var goToSection = function(section,modal) {
+    // use this to react to everything but modals, but also modals on load
+    console.log(current);
+    console.log(location.hash);
+    switch (location.hash) {
+      case "":
+        $body.removeClass('open dem gop candidates');
+        break;
+      case "#candidates":
+        $body.addClass('candidates');
+        break;
+      default:
+        $body.addClass(this.hash.replace('#',''));
+    }
+    if (current == "#dem" || current == "#gop") {
+    }
     console.log('load section on pageload via loation.hash');
+  };
+
+  window.onpopstate = function() {
+    goToSection(current,false);
   };
 
   var backLink = $('#back').on('click', function(e) {
     e.preventDefault();
     if ($body.hasClass('candidates')) {
       $body.removeClass('candidates');
-      current = getCurrentSection();
+      updateHistory(false);
     } else {
       $body.removeClass('open dem gop');
       current = "/";
@@ -42,7 +75,7 @@ jQuery(document).ready(function($) {
   var showCandidates = $('#show-candidates').on('click', function(e) {
     e.preventDefault();
     $body.addClass('candidates');
-    current = "#candidates";
+    updateHistory("#candidates");
     console.log(current);
   });
 
@@ -53,11 +86,13 @@ jQuery(document).ready(function($) {
     preloader: false,
     callbacks: {
       open: function() {
-        current = this.currItem.src;
+        // current = this.currItem.src;
+        updateHistory(this.currItem.src);
         console.log(current);
       },
       close: function() {
-        current = getCurrentSection();
+        // current = getCurrentSection();
+        updateHistory(false);
         console.log(current);
       }
     }
@@ -70,11 +105,13 @@ jQuery(document).ready(function($) {
 		preloader: false,
     callbacks: {
       open: function() {
-        current = "#" + this.ev[0].dataset.label;
+        // current = "#" + this.ev[0].dataset.label;
+        updateHistory('#' + this.ev[0].dataset.label);
         console.log(current);
       },
       close: function() {
-        current = getCurrentSection();
+        // current = getCurrentSection();
+        updateHistory(false);
         console.log(current);
       }
     }
