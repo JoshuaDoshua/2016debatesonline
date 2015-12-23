@@ -1,41 +1,76 @@
 jQuery(document).ready(function($) {
 
-  var $body = $('body');
+  var backBtn = document.getElementById('back');
 
-  var mainLinks = $('.site-nav a').on('click', function(e) {
-    e.preventDefault();
-    $body
-      .addClass('open')
-      .removeClass('dem gop')
-      .addClass(this.hash.replace('#',''));
-  });
+  var goTo = function() {
+    switch (location.hash) {
 
-  var backLink = $('#back').on('click', function(e) {
-    e.preventDefault();
-    if ($body.hasClass('candidates')) {
-      $body.removeClass('candidates');
-    } else {
-      $body.removeClass('open dem gop');
+      // default to regular screen
+      case "":
+      case "#":
+        backBtn.href = "#";
+        document.body.className = "";
+        $.magnificPopup.close();
+        break;
+
+      // tricky if come straight to candidates
+      case "#candidates":
+        var prev = document.body.className.replace("open ", "");
+        backBtn.href = "#" + document.body.className.replace("open ","");
+        document.body.className = "open candidates";
+        $.magnificPopup.close();
+        break;
+
+      // video-side choices
+      case "#dem":
+      case "#gop":
+      backBtn.href = "#";
+        document.body.className = "open " + location.hash.replace('#','');
+        $.magnificPopup.close();
+        break;
+
+      // static modals
+      case "#about":
+      case "#share":
+      case "#bug":
+        $.magnificPopup.open({
+          items: {
+            type: 'inline',
+            src: location.hash
+          },
+          mainClass: 'mfp-fade',
+          removalDelay: 160,
+          preloader: false,
+          callbacks: {
+            close: function() {
+              console.log('figure out previous spot');
+            }
+          }
+        });
+        break;
+
+      // must be a video modals
+      default:
+        var videoSrc = $('[href="' + location.hash + '"]').attr('data-src');
+        var debateType = location.hash.replace(/[^a-z]/g, "");
+        document.body.className = "open " + debateType;
+        $.magnificPopup.open({
+          type: 'iframe',
+          items: {src: videoSrc},
+          mainClass: 'mfp-fade',
+          removalDelay: 160,
+          preloader: false,
+          callbacks: {
+            close: function() {
+              history.pushState(null,null,"#" + debateType);
+              console.log('figure out previous spot');
+            }
+          }
+        });
     }
-  });
+  };
 
-  var showCandidates = $('#show-candidates').on('click', function(e) {
-    e.preventDefault();
-    $body.addClass('candidates');
-  });
-
-  var modalLinks = $('.modal-link').magnificPopup({
-    type: 'inline',
-    mainClass: 'mfp-fade',
-    removalDelay: 160,
-    preloader: false,
-  });
-
-  var videoLinks = $('.videos-link.video').magnificPopup({
-    type: 'iframe',
-		mainClass: 'mfp-fade',
-		removalDelay: 160,
-		preloader: false,
-  });
+  window.addEventListener('load',goTo);
+  window.addEventListener('popstate',goTo);
 
 });
