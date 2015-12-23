@@ -18,6 +18,7 @@ jQuery(document).ready(function($) {
         var prev = document.body.className.replace("open ", "");
         backBtn.href = "#" + document.body.className.replace("open ","");
         document.body.className = "open candidates";
+        $.magnificPopup.close();
         break;
 
       // video-side choices
@@ -25,6 +26,7 @@ jQuery(document).ready(function($) {
       case "#gop":
       backBtn.href = "#";
         document.body.className = "open " + location.hash.replace('#','');
+        $.magnificPopup.close();
         break;
 
       // static modals
@@ -50,7 +52,8 @@ jQuery(document).ready(function($) {
       // must be a video modals
       default:
         var videoSrc = $('[href="' + location.hash + '"]').attr('data-src');
-        document.body.className = "open " + location.hash.replace(/[^a-z]/g, "");
+        var debateType = location.hash.replace(/[^a-z]/g, "");
+        document.body.className = "open " + debateType;
         $.magnificPopup.open({
           type: 'iframe',
           items: {src: videoSrc},
@@ -59,6 +62,7 @@ jQuery(document).ready(function($) {
           preloader: false,
           callbacks: {
             close: function() {
+              history.pushState(null,null,"#" + debateType);
               console.log('figure out previous spot');
             }
           }
