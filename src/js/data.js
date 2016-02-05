@@ -53,7 +53,7 @@ var data = {
       url: "http://www.mikehuckabee.com/",
       img: "http://cdn.fwd.us/media/legislators/avatars/000/000/919/medium-1438709332.jpg",
       class: 'gop',
-      active: true
+      active: false
     }, {
       name: "John Kasich",
       url: "https://johnkasich.com/",
@@ -65,19 +65,19 @@ var data = {
       url: "https://martinomalley.com/",
       img: "http://img1.rnkr-static.com/user_node_img/77/1532673/C350/martin-o-malley-politicians-photo-u5.jpg",
       class: 'dem',
-      active: true
+      active: false
     }, {
       name: "George Pataki",
       url: "http://www.georgepataki.com/",
       img: "http://cdn.fwd.us/media/legislators/avatars/000/000/929/medium-1438709505.jpg",
       class: 'gop',
-      active: true
+      active: false
     }, {
       name: "Rand Paul",
       url: "https://www.randpaul.com/",
       img: "http://cdn.fwd.us/media/legislators/avatars/000/000/615/medium-1438709464.jpg",
       class: 'gop',
-      active: true
+      active: false
     }, {
       name: "Marco Rubio",
       url: "https://marcorubio.com/the-real-difference-between-marco-rubio-and-ted-cruz/",
@@ -95,7 +95,7 @@ var data = {
       url: "http://www.ricksantorum.com/",
       img: "http://cdn.fwd.us/media/legislators/avatars/000/000/923/medium-1438709921.jpg",
       class: 'gop',
-      active: true
+      active: false
     }, {
       name: "Donald Trump",
       url: "https://www.donaldjtrump.com/",
