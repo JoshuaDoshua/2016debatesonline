@@ -17,7 +17,7 @@ var data = {
       url: "https://www.chrischristie.com/",
       img: "http://cdn.fwd.us/media/legislators/avatars/000/000/922/medium-1435233424.jpg",
       class: 'gop',
-      active: true
+      active: false
     }, {
       name: "Hillary Clinton",
       url: "https://www.hillaryclinton.com/",
@@ -35,7 +35,7 @@ var data = {
       url: "https://www.carlyforpresident.com/",
       img: "http://dentongop.org/wp-content/uploads/2015/07/carly-fiorina-headshot-350x350.jpg",
       class: 'gop',
-      active: true
+      active: false
     }, {
       name: "Jim Gilmore",
       url: "http://www.gilmoreforamerica.com/",
