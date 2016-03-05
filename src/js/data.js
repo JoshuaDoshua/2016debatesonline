@@ -5,13 +5,13 @@ var data = {
       url: "https://jeb2016.com/?lang=en",
       img: "http://takeastand.aarp.org/wp-content/uploads/Jeb-Bush-e1443548600829.jpg",
       class: 'gop',
-      active: true
+      active: false
     }, {
       name: "Ben Carson",
       url: "https://www.bencarson.com/",
       img: "http://www.impact2016.org/wp-content/uploads/2015/09/16475754279_f36d9616ec_k-350x350.jpg",
       class: 'gop',
-      active: true
+      active: false
     }, {
       name: "Chris Christie",
       url: "https://www.chrischristie.com/",
@@ -41,7 +41,7 @@ var data = {
       url: "http://www.gilmoreforamerica.com/",
       img: "http://cdn.fwd.us/media/legislators/avatars/000/000/932/medium-1436386791.jpg",
       class: 'gop',
-      active: true
+      active: false
     }, {
       name: "Lindsey Graham",
       url: "http://www.lindseygraham.com/",
