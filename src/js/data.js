@@ -136,10 +136,10 @@ var data = {
       src: "https://www.youtube.com/watch?v=dNV4Gn6XC0c"
     }, {
       date: new Date(2016,03,3),
-      src: "https://www.youtube.com/watch?v=p46yES-rTQM"
+      src: "https://www.youtube.com/watch?v=EOptTq6WYKY"
     }, {
       date: new Date(2016,03,10),
-      src: null
+      src: "https://www.youtube.com/watch?v=Zv2GnJTQYq8"
     }, {
       date: new Date(2016,03,21),
       src: null
@@ -147,13 +147,13 @@ var data = {
   ],
   "dem": [{
       date: new Date(2015,10,13),
-      src: "https://player.vimeo.com/video/142343973"
+      src: "https://www.youtube.com/watch?v=Mr1KJR5UZjM"
     }, {
       date: new Date(2015,11,14),
       src: "https://player.vimeo.com/video/145763686"
     }, {
       date: new Date(2015,12,19),
-      src: "https://www.youtube.com/watch?v=hCFsCQavaDw"
+      src: "https://www.youtube.com/watch?v=ETcKlevipew"
     }, {
       date: new Date(2016,01,17),
       src: "https://www.youtube.com/watch?v=ti2Nokoq1J4"
@@ -162,13 +162,13 @@ var data = {
       src: "https://www.youtube.com/watch?v=UhVGAZz-EwQ"
     }, {
       date: new Date(2016,02,11),
-      src: "https://www.youtube.com/watch?v=U1NyT9xJy40"
+      src: "https://www.youtube.com/watch?v=oRwLsNpI7OM"
     }, {
       date: new Date(2016,03,6),
-      src: null
+      src: "https://www.youtube.com/watch?v=TSgn_6vPdsc"
     }, {
       date: new Date(2016,03,9),
-      src: null
+      src: "https://www.youtube.com/watch?v=7g67LspQYck"
     }
   ]
 };
