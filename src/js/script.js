@@ -1,6 +1,15 @@
 jQuery(document).ready(function($) {
 
+	function capitalizeEachWord(str) {
+		return str.replace(/\w\S*/g, function(txt) {
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+		});
+	}
+
   var backBtn = document.getElementById('back');
+
+  var title;
+  var originalTitle = "Watch 2016 Presidential Debates Online";
 
   var goTo = function() {
     switch (location.hash) {
@@ -10,6 +19,7 @@ jQuery(document).ready(function($) {
       case "#":
         backBtn.href = "#";
         document.body.className = "";
+		document.title = originalTitle;
         $.magnificPopup.close();
         break;
 
@@ -18,6 +28,7 @@ jQuery(document).ready(function($) {
         var prev = document.body.className.replace("open ", "");
         backBtn.href = "#" + document.body.className.replace("open ","");
         document.body.className = "open candidates";
+		document.title = "Presidential Candidates | " + originalTitle;
         $.magnificPopup.close();
         break;
 
@@ -26,6 +37,7 @@ jQuery(document).ready(function($) {
       case "#gop":
       backBtn.href = "#";
         document.body.className = "open " + location.hash.replace('#','');
+		document.title = (location.hash == "#dem" ? "Democratic" : "Republican") + " Debate Videos | " + originalTitle;
         $.magnificPopup.close();
         break;
 
@@ -34,6 +46,9 @@ jQuery(document).ready(function($) {
       case "#share":
       case "#bug":
       case "#no-video":
+	  	title = location.hash.replace('#', '').replace('-', ' ');
+		title = capitalizeEachWord(title);
+		document.title = title + " | " + originalTitle;
         $.magnificPopup.open({
           items: {
             type: 'inline',
@@ -54,7 +69,8 @@ jQuery(document).ready(function($) {
       default:
         var videoSrc = $('[href="' + location.hash + '"]').attr('data-src');
         var debateType = location.hash.replace(/[^a-z]/g, "");
-        document.body.className = "open " + debateType;
+		document.body.className = "open " + debateType;
+		document.title = debateType.toUpperCase() + " Debate " + location.hash.replace('#dem-', '').replace('#gop-','') + " | " + originalTitle;
         $.magnificPopup.open({
           type: 'iframe',
           items: {src: videoSrc},
