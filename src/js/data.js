@@ -83,7 +83,7 @@ var data = {
       url: "https://marcorubio.com/the-real-difference-between-marco-rubio-and-ted-cruz/",
       img: "http://www.ooyuz.com/images/2015/8/15/1442292498863.jpg",
       class: 'gop',
-      active: true
+      active: false
     }, {
       name: "Bernie Sanders",
       url: "https://secure.berniesanders.com/",
