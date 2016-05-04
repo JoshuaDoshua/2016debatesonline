@@ -59,7 +59,7 @@ var data = {
       url: "https://johnkasich.com/",
       img: "http://cdn.fwd.us/media/legislators/avatars/000/000/928/medium-1435233439.jpg",
       class: 'gop',
-      active: true
+      active: false
     }, {
       name: "Martin O'Malley",
       url: "https://martinomalley.com/",
