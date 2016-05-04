@@ -29,7 +29,7 @@ var data = {
       url: "https://www.tedcruz.org/",
       img: "http://cdn.fwd.us/media/legislators/avatars/000/000/185/medium-1438710925.jpg",
       class: 'gop',
-      active: true
+      active: false
     }, {
       name: "Carly Fiorina",
       url: "https://www.carlyforpresident.com/",
