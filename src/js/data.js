@@ -140,9 +140,6 @@ var data = {
     }, {
       date: new Date(2016,03,10),
       src: "https://www.youtube.com/watch?v=9NbyPk9z6YU"
-    }, {
-      date: new Date(2016,03,21),
-      src: null
     }
   ],
   "dem": [{
