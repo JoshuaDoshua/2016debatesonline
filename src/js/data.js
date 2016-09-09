@@ -21,7 +21,7 @@ var data = {
     }, {
       name: "Hillary Clinton",
       url: "https://www.hillaryclinton.com/",
-      img: "http://cdn.fwd.us/media/legislators/avatars/000/000/927/medium-1438710287.jpg",
+      img: "https://upload.wikimedia.org/wikipedia/commons/2/27/Hillary_Clinton_official_Secretary_of_State_portrait_crop.jpg",
       class: 'dem',
       active: true
     }, {
@@ -33,7 +33,7 @@ var data = {
     }, {
       name: "Carly Fiorina",
       url: "https://www.carlyforpresident.com/",
-      img: "http://dentongop.org/wp-content/uploads/2015/07/carly-fiorina-headshot-350x350.jpg",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CarlyFiorina49416.jpeg/800px-CarlyFiorina49416.jpeg",
       class: 'gop',
       active: false
     }, {
@@ -45,7 +45,7 @@ var data = {
     }, {
       name: "Lindsey Graham",
       url: "http://www.lindseygraham.com/",
-      img: "http://dentongop.org/wp-content/uploads/2015/07/Lindsey-graham-headshot1-350x350.jpg",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Lindsey_Graham_official_photo.jpg/800px-Lindsey_Graham_official_photo.jpg",
       class: 'gop',
       active: false
     }, {
@@ -89,7 +89,7 @@ var data = {
       url: "https://secure.berniesanders.com/",
       img: "http://img1.rnkr-static.com/user_node_img/29/572212/C350/bernie-sanders-politicians-photo-u4.jpg",
       class: 'dem',
-      active: true
+      active: false
     }, {
       name: "Rick Santorum",
       url: "http://www.ricksantorum.com/",

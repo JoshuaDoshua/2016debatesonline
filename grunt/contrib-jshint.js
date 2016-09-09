@@ -7,6 +7,7 @@ module.exports = function(grunt)
   grunt.config('jshint', {
 
     beforeconcat: [
+			'<%= dir.src.js %>/data.js',
       '<%= dir.src.js %>/script.js'
     ]
   });

@@ -47,7 +47,6 @@ module.exports = function(grunt)
 
 
 	grunt.registerTask('scripts', [
-		'jshint:beforeconcat',
 		'concat:scripts',
 		'uglify',
 		'notify:scripts',
@@ -76,7 +75,6 @@ module.exports = function(grunt)
 		'autoprefixer',
 		'concat:styles',
 		'cssmin',
-		'jshint',
 		'concat:depScripts',
 		'concat:scripts',
 		'uglify',
