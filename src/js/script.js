@@ -28,16 +28,24 @@ jQuery(document).ready(function($) {
         var prev = document.body.className.replace("open ", "");
         backBtn.href = "#" + document.body.className.replace("open ","");
         document.body.className = "open candidates";
-		document.title = "Presidential Candidates | " + originalTitle;
+				document.title = "Presidential Candidates | " + originalTitle;
         $.magnificPopup.close();
         break;
 
       // video-side choices
       case "#dem":
       case "#gop":
-      backBtn.href = "#";
-        document.body.className = "open " + location.hash.replace('#','');
-		document.title = (location.hash == "#dem" ? "Democratic" : "Republican") + " Debate Videos | " + originalTitle;
+			case "#vs":
+				if (location.hash == "#dem") {
+					title = "Democratic";
+				} else if (location.hash == "#gop") {
+					title = "Repbulican";
+				} else {
+					title = "Presidential";
+				}
+				backBtn.href = "#";
+				document.body.className = "open " + location.hash.replace('#','');
+				document.title = title + " Debate Videos | " + originalTitle;
         $.magnificPopup.close();
         break;
 
@@ -46,9 +54,9 @@ jQuery(document).ready(function($) {
       case "#share":
       case "#bug":
       case "#no-video":
-	  	title = location.hash.replace('#', '').replace('-', ' ');
-		title = capitalizeEachWord(title);
-		document.title = title + " | " + originalTitle;
+				title = location.hash.replace('#', '').replace('-', ' ');
+				title = capitalizeEachWord(title);
+				document.title = title + " | " + originalTitle;
         $.magnificPopup.open({
           items: {
             type: 'inline',
