@@ -21,7 +21,7 @@ var data = {
     }, {
       name: "Hillary Clinton",
       url: "https://www.hillaryclinton.com/",
-      img: "https://upload.wikimedia.org/wikipedia/commons/2/27/Hillary_Clinton_official_Secretary_of_State_portrait_crop.jpg",
+      img: "https://pbs.twimg.com/profile_images/750300510264107008/G8-PA5KA.jpg",
       class: 'dem',
       active: true
     }, {
@@ -45,7 +45,7 @@ var data = {
     }, {
       name: "Lindsey Graham",
       url: "http://www.lindseygraham.com/",
-      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Lindsey_Graham_official_photo.jpg/800px-Lindsey_Graham_official_photo.jpg",
+      img: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Lindsey_Graham,_official_Senate_photo_portrait_cropped.jpg",
       class: 'gop',
       active: false
     }, {
@@ -81,7 +81,7 @@ var data = {
     }, {
       name: "Marco Rubio",
       url: "https://marcorubio.com/the-real-difference-between-marco-rubio-and-ted-cruz/",
-      img: "http://www.ooyuz.com/images/2015/8/15/1442292498863.jpg",
+      img: "https://pbs.twimg.com/profile_images/676932291885727744/02ydNw0Y.jpg",
       class: 'gop',
       active: false
     }, {
@@ -170,5 +170,18 @@ var data = {
       date: new Date(2016,04,16),
       src: "https://www.youtube.com/watch?v=Dke3JRFnSaw"
     }
-  ]
+  ],
+	"vs": [{
+			date: new Date(2016,09,26),
+			src: null,
+		}, {
+			date: new Date(2016,10,4),
+			src: null
+		}, {
+			date: new Date(2016,10,9),
+			src: null
+		}, {
+			date: new Date(2016,10,19),
+			src: null
+	}]
 };

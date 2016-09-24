@@ -78,9 +78,11 @@
 }
 $demCount: 9;
 $gopCount: 12;
+$vsCount: 4;
 
 $demWidth:  100/$demCount;
 $gopWidth: 100/$gopCount;
+$vsWidth: 100/$vsCount;
 
 #videos-dem .videos-item{
   .videos-link { height: #{$demWidth + "vh"}; }
@@ -96,6 +98,23 @@ $gopWidth: 100/$gopCount;
       left: #{$demWidth * ($i - 1) + "%"};
     } @else {
       right: #{($demCount - $i) * $demWidth + "%"};
+    }
+  }
+}
+#videos-vs .videos-item{
+  .videos-link { height: #{$vsWidth + "vh"}; }
+  .videos-title {
+    width: #{$vsWidth + "%"};
+    line-height: #{$vsWidth + "vh"};
+  }
+}
+@for $i from 1 through $vsCount {
+  #videos-vs .videos-item:nth-child(#{$i}) .videos-title {
+    // left: #{$vsWidth * ($i - 1) + "%"};
+    @if ($i <= ($vsCount/2) ) {
+      left: #{$vsWidth * ($i - 1) + "%"};
+    } @else {
+      right: #{($vsCount - $i) * $vsWidth + "%"};
     }
   }
 }

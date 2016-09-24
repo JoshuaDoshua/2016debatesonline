@@ -25,6 +25,7 @@ path.red { fill: $red; }
 	.foot-link,
 	&.dem #videos-dem,
 	&.gop #videos-gop,
+	&.vs #videos-vs,
 	&.candidates #candidates-list {
     opacity: 1;
     pointer-events: all;

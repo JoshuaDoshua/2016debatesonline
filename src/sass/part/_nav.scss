@@ -6,16 +6,18 @@
   display: flex;
   pointer-events: none;
   a {
-    flex-basis: 50%;
+		flex: 4 4 auto;
     position: relative;
     transition-timing-function: $easeInOutBack;
     background: $white;
     pointer-events: all;
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: center;
     padding: 10%;
     .open & {
+			transform: scale(0);
+			opacity: 0;
       &:first-child { transform: translateX(-100%); }
       &:last-child { transform: translateX(100%); }
     }
@@ -26,12 +28,27 @@
       transition: all ease $tm;
     }
     &:after { top: 50%; }
+		&:nth-child(2) {
+			flex: 1;
+			&:hover::before { background: $red; }
+			&:hover::after { background: $blue; }
+		}
     &:hover {
       &:before { background: $blue; }
       &:after { background: $red; }
       svg path { fill: $white; }
+			span { color: $white !important; }
     }
   }
+	span {
+		position: relative;
+		z-index: 2;
+		font-size: 5vh;
+		display: block;
+		line-height: 1;
+		&:first-of-type { color: $blue;  }
+		&:last-of-type { color: $red; }
+	}
   svg {
     max-width: 80%;
     max-height: 80%;
