@@ -5,7 +5,7 @@
   flex-wrap: nowrap;
   display: flex;
   pointer-events: none;
-  a {
+  &-link {
 		flex: 4 4 auto;
     position: relative;
     transition-timing-function: $easeInOutBack;
@@ -28,10 +28,19 @@
       transition: all ease $tm;
     }
     &:after { top: 50%; }
-		&:nth-child(2) {
+		&-vs {
+			@include absoluteCenter;
+			z-index: 999;
+			@include circle(2.5vw,2.5vh);
+			overflow: hidden;
 			flex: 1;
-			&:hover::before { background: $red; }
-			&:hover::after { background: $blue; }
+			&:hover {
+				span { color: $white !important;
+					&:first-letter { color: $white; }
+				}
+				&::before { background: $red; }
+				&::after { background: $blue; }
+			}
 		}
     &:hover {
       &:before { background: $blue; }
@@ -41,17 +50,17 @@
     }
   }
 	span {
-		position: relative;
+		@include absoluteCenter;
 		z-index: 2;
 		font-size: 5vh;
 		display: block;
 		line-height: 1;
-		&:first-of-type { color: $blue;  }
-		&:last-of-type { color: $red; }
+		color: $red;
+		&:first-letter { color: $blue; }
 	}
   svg {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 60%;
+    max-height: 60%;
     width: auto;
     height: auto;
     @include absoluteCenter;
