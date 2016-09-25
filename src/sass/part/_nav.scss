@@ -29,11 +29,14 @@
     }
     &:after { top: 50%; }
 		&-vs {
-			@include absoluteCenter;
-			z-index: 999;
-			@include circle(2.5vw,2.5vh);
-			overflow: hidden;
 			flex: 1;
+			@include respond(550px) {
+				@include absoluteCenter;
+				@include circle(2.5vw,2.5vh);
+				z-index: 999;
+				overflow: hidden;
+				padding: 7vw;
+			}
 			&:hover {
 				span { color: $white !important;
 					&:first-letter { color: $white; }
