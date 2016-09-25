@@ -73,6 +73,10 @@ path.red { fill: $red; }
 		margin: 1.5em auto;
 		max-width: 75%;
 	}
+	a:not(.btn) {
+		color: $blue;
+		&:hover { color: $red; }
+	}
 }
 #pull-request {
 	font-size: .85em;
