@@ -19,6 +19,7 @@ module.exports = function(grunt)
 					dist: ['<%= dir.dist.js %>/**/*.js']
 				},
 				sections: {
+					shame: '<%= dir.src.html %>/shame.html',
 					head: '<%= dir.src.html %>/head.html',
 					candidates: '<%= dir.src.html %>/candidates.html',
 					videos: '<%= dir.src.html %>/videos.html',
